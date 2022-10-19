@@ -25,7 +25,7 @@ function generateMarkdown(data) {
   ${data.credits}
   
   ## License
-  ${data.license}
+  ![badge](https://img.shields.io/badge/license-${data.license}-success)](https://shields.io/)
   
   ## Features
   ${data.features}
