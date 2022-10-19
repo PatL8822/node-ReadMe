@@ -41,7 +41,7 @@ const userQuestions = [
         type: 'list',
         message: ' What license did you use?',
         name: 'license',
-        choices: ['The GPL License', 'The MIT License', 'GNU License', 'Apache License', 'N/A'],
+        choices: ['GPL', 'MIT', 'GNU', 'Apache', 'N/A'],
         validate: (value) => { if (value) { return true } else { return 'Please make a selection.' } }
     },
     {
@@ -52,7 +52,7 @@ const userQuestions = [
     },
     {
         type: 'input',
-        message: 'If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so here.',
+        message: 'If you created an application or package and \n would like other developers to contribute to it, \n you can include guidelines for how to do so here.',
         name: 'contribute',
         validate: (value) => { if (value) { return true } else { return 'Please add discription to "Contribute".' } }
     },
@@ -79,16 +79,17 @@ const userQuestions = [
 // A function to write README file
 function writeToFile(fileName, data) {
 
-    fs.writeFile(fileName, data, JSON.stringify(data, null, '\t'), (err) =>
+    fs.writeFile(fileName, data, (err) =>
         err ? console.log(err) : console.log('README.md has been generated!')
     );
 }
 
-// function to initialize app
+// A function to initialize app
 function init() {
-    inquirer.prompt(userQuestions).then((data) => {
-        writeToFile('README.md', markDown(data));
-    });
+    inquirer.prompt(userQuestions)
+        .then((data) => {
+            writeToFile('README.md', markDown(data));
+        });
 }
 
 //  call to initialize app
