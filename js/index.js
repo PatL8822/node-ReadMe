@@ -49,6 +49,18 @@ function userQuestions() {
                 },
                 {
                     type: 'input',
+                    message: 'If your project has a lot of features, list them here.',
+                    name: 'features',
+                    validate: (value) => { if (value) { return true } else { return 'If there are no features type (None).' } }
+                },
+                {
+                    type: 'input',
+                    message: 'If you created an application or package and would like other developers to contribute to it, you can include guidelines for how to do so here.',
+                    name: 'contribute',
+                    validate: (value) => { if (value) { return true } else { return 'Please add discription to "Contribute".' } }
+                },
+                {
+                    type: 'input',
                     message: 'Is there a test?',
                     name: 'test',
                     validate: (value) => { if (value) { return true } else { return 'Please add any test criteria.' } }
@@ -62,7 +74,7 @@ function userQuestions() {
                 {
                     type: 'input',
                     message: 'Add your emmail address ',
-                    name: 'githubuser',
+                    name: 'email',
                     validate: (value) => { if (value) { return true } else { return 'Whats your Email?' } }
                 },
 
@@ -70,7 +82,7 @@ function userQuestions() {
             ]);
 }
 
-// // function to write README file
+// A function to write README file
 function writeToFile(fileName, data) {
 
     fs.writeFile(fileName, data, (err) =>
@@ -79,7 +91,11 @@ function writeToFile(fileName, data) {
 }
 
 // function to initialize app
-function init() { }
+function init() {
+    inquirer.prompt(userQuestions).then((data) => {
+        writeToFile('README.md', markDown(data));
+    });
+}
 
 //  call to initialize app
 init();
