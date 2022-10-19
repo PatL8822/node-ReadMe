@@ -58,7 +58,7 @@ const userQuestions = [
     },
     {
         type: 'input',
-        message: 'Is there a test?',
+        message: 'Did you write a test for this application? \n Provide examples on how to run them here.',
         name: 'test',
         validate: (value) => { if (value) { return true } else { return 'Please add any test criteria.' } }
     },
