@@ -41,7 +41,7 @@ const userQuestions = [
         type: 'list',
         message: ' What license did you use?',
         name: 'license',
-        choices: ['GPL', 'MIT', 'GNU', 'Apache', 'N/A'],
+        choices: ['GPL', 'MIT', 'GNU', 'Apache',],
         validate: (value) => { if (value) { return true } else { return 'Please make a selection.' } }
     },
     {
@@ -52,7 +52,7 @@ const userQuestions = [
     },
     {
         type: 'input',
-        message: 'If you created an application or package and \n would like other developers to contribute to it, \n you can include guidelines for how to do so here.',
+        message: 'include guidelines for how to contribute',
         name: 'contribute',
         validate: (value) => { if (value) { return true } else { return 'Please add discription to "Contribute".' } }
     },
